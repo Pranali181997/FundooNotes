@@ -3,6 +3,7 @@ using RepositoryLayer.FundooNoteContex;
 using RepositoryLayer.Interface;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RepositoryLayer.Service
@@ -28,6 +29,23 @@ namespace RepositoryLayer.Service
                 user1.registerdDate = DateTime.Now;
                 fundoo.Users.Add(user1);
                 fundoo.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public string LoginUser(string Email, string Password)
+        {
+            try
+            {
+                var result = fundoo.Users.FirstOrDefault(u => u.Email == Email && u.Password == Password);
+                if (result == null)
+                {
+                    return null;
+                }
+                return Email;
+                //string Password = Password;
             }
             catch (Exception ex)
             {
