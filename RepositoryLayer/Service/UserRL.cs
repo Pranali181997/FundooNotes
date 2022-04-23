@@ -207,7 +207,28 @@ namespace RepositoryLayer.Service
                 throw ex;
             }
         }
+        public bool Deletepassword(string email)
+        {
+            try
+            {
+                var result = fundoo.Users.Where(e => e.Email == email).FirstOrDefault();
+
+                if (result != null)
+                {
+                    fundoo.Users.Remove(result);
+                    fundoo.SaveChanges();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
-    
-
