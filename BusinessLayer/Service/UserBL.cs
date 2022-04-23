@@ -30,13 +30,34 @@ namespace BusinessLayer.Service
             try
             {
 
-                return this.userRL.LoginUser(Email, Password);
+                return userRL.LoginUser(Email, Password);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
+        }
+        public bool ForgetPassword(string Email)
+        {
+            try
+            {
+                return userRL.ForgetPassword(Email);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool ChangePassword(string Email, string password,string newpassword)
+        {
+            try
+            {
+                return userRL.ChangePassword(Email,password,newpassword);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
